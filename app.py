@@ -97,7 +97,7 @@ with c1:
         text="Orders"
     )
     fig.update_traces(textposition="outside")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig,width='stretch')
 
 with c2:
     fig = px.bar(
@@ -105,7 +105,7 @@ with c2:
         x="platform", y="service_rating",
         title="⭐ Avg Rating by Platform"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with c3:
     fig = px.histogram(
@@ -114,7 +114,7 @@ with c3:
         nbins=20,
         title="📦 Delivery Time Distribution"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 # ------------------ CHART ROW 2 ------------------
 c4, c5, c6 = st.columns(3)
@@ -129,7 +129,7 @@ with c4:
         x="delivery_delay", y="service_rating",
         title="📉 Rating vs Delivery Delay"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with c5:
     refund_df = (
@@ -141,7 +141,7 @@ with c5:
         x="refund_requested", y="service_rating",
         title="💸 Rating vs Refund"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with c6:
     df_hour = df.copy()
@@ -154,7 +154,7 @@ with c6:
             x="platform", y="delivery_time_(minutes)",
             title="🌙 Evening Delivery Stress"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     else:
         st.info("No evening data available for selected filters.")
 
@@ -188,7 +188,7 @@ bigram_df = (
     .head(10)
 )
 
-st.dataframe(bigram_df, use_container_width=True)
+st.dataframe(bigram_df, width='stretch')
 # ------------------ EXECUTIVE INSIGHTS ------------------
 st.subheader("📌 Executive Insights")
 
@@ -238,3 +238,4 @@ st.download_button(
     insights_text,
     file_name="quick_commerce_insights.txt"
 )
+
