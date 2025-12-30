@@ -92,9 +92,12 @@ No claims are made about real historical timelines.
 ```bash
 git clone <repository-url>
 cd quick_commerce_insights
+```
 2. Run the streamlit app
+
 ```bash
 streamlit run app.py
+```
 ---
 ## Streamlit app link 
 https://quickcommercedeliveryinsights.streamlit.app/
