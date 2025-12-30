@@ -93,7 +93,7 @@ with c1:
         sla_df,
         x="SLA Status",
         y="Orders",
-        title="⏱ SLA Breach Distribution",
+        title=" SLA Breach Distribution",
         text="Orders"
     )
     fig.update_traces(textposition="outside")
@@ -103,7 +103,7 @@ with c2:
     fig = px.bar(
         df.groupby("platform", as_index=False)["service_rating"].mean(),
         x="platform", y="service_rating",
-        title="⭐ Avg Rating by Platform"
+        title=" Avg Rating by Platform"
     )
     st.plotly_chart(fig, width='stretch')
 
@@ -112,7 +112,7 @@ with c3:
         df,
         x="delivery_time_(minutes)",
         nbins=20,
-        title="📦 Delivery Time Distribution"
+        title=" Delivery Time Distribution"
     )
     st.plotly_chart(fig, width='stretch')
 
@@ -127,7 +127,7 @@ with c4:
     fig = px.bar(
         delay_df,
         x="delivery_delay", y="service_rating",
-        title="📉 Rating vs Delivery Delay"
+        title=" Rating vs Delivery Delay"
     )
     st.plotly_chart(fig, width='stretch')
 
@@ -139,7 +139,7 @@ with c5:
     fig = px.bar(
         refund_df,
         x="refund_requested", y="service_rating",
-        title="💸 Rating vs Refund"
+        title=" Rating vs Refund"
     )
     st.plotly_chart(fig, width='stretch')
 
@@ -152,7 +152,7 @@ with c6:
         fig = px.bar(
             evening.groupby("platform", as_index=False)["delivery_time_(minutes)"].mean(),
             x="platform", y="delivery_time_(minutes)",
-            title="🌙 Evening Delivery Stress"
+            title=" Evening Delivery Stress"
         )
         st.plotly_chart(fig, width='stretch')
     else:
@@ -190,7 +190,7 @@ bigram_df = (
 
 st.dataframe(bigram_df, width='stretch')
 # ------------------ EXECUTIVE INSIGHTS ------------------
-st.subheader("📌 Executive Insights")
+st.subheader(" Executive Insights")
 
 sla_rate = (df['sla_breach'] == "Yes").mean() * 100
 
@@ -211,12 +211,12 @@ evening_stress = (
 
 st.markdown(f"""
 **Operational Performance**
-- 🚨 **{sla_rate:.1f}%** of orders breach the 30-minute SLA, indicating sustained delivery pressure.
-- 🌙 Evening hours (6–11 PM) show the **highest delivery stress**, especially on **{evening_stress.index[0]}**.
+-  **{sla_rate:.1f}%** of orders breach the 30-minute SLA, indicating sustained delivery pressure.
+-  Evening hours (6–11 PM) show the **highest delivery stress**, especially on **{evening_stress.index[0]}**.
 
 **Customer Experience Drivers**
-- ⏱ Delivery delays reduce average ratings by **{delay_impact:.2f} stars**.
-- 💸 Refund requests reduce average ratings by **{refund_impact:.2f} stars**, making refunds a stronger dissatisfaction signal than SLA breach alone.
+-  Delivery delays reduce average ratings by **{delay_impact:.2f} stars**.
+-  Refund requests reduce average ratings by **{refund_impact:.2f} stars**, making refunds a stronger dissatisfaction signal than SLA breach alone.
 
 **NLP-Based Root Causes**
 - Context-aware phrase analysis highlights **operational issues** such as item accuracy, delivery delays, and quality complaints.
@@ -238,4 +238,5 @@ st.download_button(
     insights_text,
     file_name="quick_commerce_insights.txt"
 )
+
 
